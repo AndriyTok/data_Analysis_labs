@@ -19,3 +19,5 @@ def find_two_max(arr):
 
 max1, max2 = find_two_max(array)
 print(f"Два найбільші числа: {max1}, {max2}")
+
+#мій номер в підгрупі - 11
