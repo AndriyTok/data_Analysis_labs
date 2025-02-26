@@ -7,8 +7,6 @@
 # В програмі передбачити можливість зміни інтервалу табуляції, кроку табуляції
 # заданої функції та параметрів шуму.
 
-
-
 import numpy as np
 import matplotlib.pyplot as plt
 import math
