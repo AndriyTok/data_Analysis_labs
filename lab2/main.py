@@ -14,7 +14,7 @@ import math
 def fn(x):
     return math.sin(0.1 * x) ** 2 + math.sin(x) ** 2
 
-def generate_data(start=0, end=10, step=0.1, noise_mean=0, noise_std=0.2):
+def generate_data(start, end, step, noise_mean, noise_std):
     x_values = np.arange(start, end + step, step)
     y_values = np.array([fn(x) for x in x_values])
     noise = np.random.normal(noise_mean, noise_std, len(x_values))
@@ -36,20 +36,22 @@ def plot_data(x, y_clean, y_noisy, y_smoothed, title="Табуляція фун�
     plt.grid()
     plt.show()
 
-# Параметри табуляції
-start = 0   # Початок інтервалу
-end = 10    # Кінець інтервалу
-step = 0.1  # Крок табуляції
+# Отримання параметрів від користувача
+try:
+    start = float(input("Введіть початок інтервалу: "))
+    end = float(input("Введіть кінець інтервалу: "))
+    step = float(input("Введіть крок табуляції: "))
+    noise_mean = float(input("Введіть середнє значення шуму: "))
+    noise_std = float(input("Введіть стандартне відхилення шуму: "))
+except ValueError:
+    print("Некоректне введення! Використовуються значення за замовчуванням.")
+    start, end, step = 0, 10, 0.1
+    noise_mean, noise_std = 0, 0.2
 
-# Параметри шуму
-noise_mean = 0     # Середнє значення шуму
-noise_std = 0.2    # Стандартне відхилення шуму
-
-# Генеруємо дані
+# Генеруємо та обробляємо дані
 x_vals, y_clean, y_noisy = generate_data(start, end, step, noise_mean, noise_std)
-
-# Згладжуємо зашумлений сигнал
 y_smoothed = smooth_data(y_noisy)
 
 # Відображаємо результат
 plot_data(x_vals, y_clean, y_noisy, y_smoothed)
+
