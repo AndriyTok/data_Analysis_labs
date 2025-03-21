@@ -21,14 +21,41 @@ def generate_data(start, end, step, noise_mean, noise_std):
     y_noisy = y_values + noise
     return x_values, y_values, y_noisy
 
-def smooth_data(y_noisy, window_size=5):
-    return np.convolve(y_noisy, np.ones(window_size)/window_size, mode='same')
+def moving_average(y_noisy, window_size=5):
+    smoothed = np.zeros_like(y_noisy)
+    half_window = window_size // 2
+    for i in range(len(y_noisy)):
+        start = max(0, i - half_window)
+        end = min(len(y_noisy), i + half_window + 1)
+        smoothed[i] = sum(y_noisy[start:end]) / (end - start)
+    return smoothed
 
-def plot_data(x, y_clean, y_noisy, y_smoothed, title="Табуляція функції"):
+def weighted_moving_average(y_noisy, window_size=5):
+    smoothed = np.zeros_like(y_noisy)
+    half_window = window_size // 2
+    for i in range(len(y_noisy)):
+        start = max(0, i - half_window)
+        end = min(len(y_noisy), i + half_window + 1)
+        weights = np.arange(1, end - start + 1)
+        weights = weights / weights.sum()
+        smoothed[i] = np.sum(y_noisy[start:end] * weights)
+    return smoothed
+
+def exponential_smoothing(y_noisy, alpha=0.3):
+    smoothed = np.zeros_like(y_noisy)
+    smoothed[0] = y_noisy[0]
+    for t in range(1, len(y_noisy)):
+        smoothed[t] = alpha * y_noisy[t] + (1 - alpha) * smoothed[t-1]
+    return smoothed
+
+def calculate_error(y_clean, y_smoothed):
+    return np.mean(np.abs(y_clean - y_smoothed))
+
+def plot_data(x, y_clean, y_noisy, y_smoothed, title):
     plt.figure(figsize=(10, 5))
     plt.plot(x, y_clean, label="Сигнал без шуму", color="green")
     plt.plot(x, y_noisy, label="Зашумлений сигнал", color="blue", alpha=0.6)
-    plt.plot(x, y_smoothed, label="Згладжений сигнал", color="red")
+    plt.plot(x, y_smoothed, label=title, color="red")
     plt.xlabel("x")
     plt.ylabel("f(x)")
     plt.title(title)
@@ -43,15 +70,33 @@ try:
     step = float(input("Введіть крок табуляції: "))
     noise_mean = float(input("Введіть середнє значення шуму: "))
     noise_std = float(input("Введіть стандартне відхилення шуму: "))
+    window_size = int(input("Введіть розмір вікна для ковзного середнього: "))
+    alpha = float(input("Введіть коефіцієнт згладжування для EMA (0-1): "))
 except ValueError:
     print("Некоректне введення! Використовуються значення за замовчуванням.")
     start, end, step = 0, 10, 0.1
     noise_mean, noise_std = 0, 0.2
+    window_size = 5
+    alpha = 0.3
 
-# Генеруємо та обробляємо дані
+# Генеруємо дані
 x_vals, y_clean, y_noisy = generate_data(start, end, step, noise_mean, noise_std)
-y_smoothed = smooth_data(y_noisy)
 
-# Відображаємо результат
-plot_data(x_vals, y_clean, y_noisy, y_smoothed)
+# Обчислення згладжених даних
+y_sma = moving_average(y_noisy, window_size)
+y_wma = weighted_moving_average(y_noisy, window_size)
+y_ema = exponential_smoothing(y_noisy, alpha)
 
+# Обчислення похибок
+error_sma = calculate_error(y_clean, y_sma)
+error_wma = calculate_error(y_clean, y_wma)
+error_ema = calculate_error(y_clean, y_ema)
+
+print(f"Похибка для SMA: {error_sma:.5f}")
+print(f"Похибка для WMA: {error_wma:.5f}")
+print(f"Похибка для EMA: {error_ema:.5f}")
+
+# Відображення результатів
+plot_data(x_vals, y_clean, y_noisy, y_sma, "Просте ковзне середнє (SMA)")
+plot_data(x_vals, y_clean, y_noisy, y_wma, "Зважене ковзне середнє (WMA)")
+plot_data(x_vals, y_clean, y_noisy, y_ema, "Експоненційне згладжування (EMA)")

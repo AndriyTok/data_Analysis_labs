@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47d9c37a-0330-4604-916a-e45875d78084" name="Changes" comment="lab 2 recovery_commit">
+      <change beforePath="$PROJECT_DIR$/.idea/data_Analysis_labs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_Analysis_labs.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab2/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/main.py" afterDir="false" />
     </list>
@@ -49,6 +50,7 @@
     &quot;Python.main (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -139,6 +141,10 @@
       <workItem from="1740681136807" duration="34000" />
       <workItem from="1741033803381" duration="487000" />
       <workItem from="1741702632295" duration="1322000" />
+      <workItem from="1742066985237" duration="12000" />
+      <workItem from="1742329450884" duration="559000" />
+      <workItem from="1742367925009" duration="2871000" />
+      <workItem from="1742372392333" duration="57000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -197,7 +203,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="lab 2 recovery_commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/data_Analysis_labs$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1741710303798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab2" />
+    <SUITE FILE_PATH="coverage/data_Analysis_labs$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1742372409854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab2" />
     <SUITE FILE_PATH="coverage/data_Analysis_labs$main.coverage" NAME="main Coverage Results" MODIFIED="1740553944880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab1" />
   </component>
 </project>
