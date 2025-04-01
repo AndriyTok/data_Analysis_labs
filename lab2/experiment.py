@@ -3,11 +3,9 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import mean_absolute_error
 import math
 
-# Функція для обчислення f(x)
 def fn(x):
     return math.sin(0.1 * x) ** 2 + math.sin(x) ** 2
 
-# Функція для генерації даних
 def generate_data(start, end, step, noise_mean, noise_std):
     x_values = np.arange(start, end + step, step)
     y_values = np.array([fn(x) for x in x_values])
@@ -15,17 +13,22 @@ def generate_data(start, end, step, noise_mean, noise_std):
     y_noisy = y_values + noise
     return x_values, y_values, y_noisy
 
-# Метод ковзного середнього
-def moving_average(data, window_size):
-    return np.convolve(data, np.ones(window_size)/window_size, mode='valid')
-
-# Метод експоненціального згладжування
-def exponential_smoothing(data, alpha):
-    smoothed = np.zeros_like(data)
-    smoothed[0] = data[0]
-    for t in range(1, len(data)):
-        smoothed[t] = alpha * data[t] + (1 - alpha) * smoothed[t-1]
+def moving_average(y_noisy, window_size=5):
+    smoothed = np.zeros_like(y_noisy)
+    half_window = window_size // 2
+    for i in range(len(y_noisy)):
+        start = max(0, i - half_window)
+        end = min(len(y_noisy), i + half_window + 1)
+        smoothed[i] = sum(y_noisy[start:end]) / (end - start)
     return smoothed
+
+def exponential_smoothing(y_noisy, alpha=0.3):
+    smoothed = np.zeros_like(y_noisy)
+    smoothed[0] = y_noisy[0]
+    for t in range(1, len(y_noisy)):
+        smoothed[t] = alpha * y_noisy[t] + (1 - alpha) * smoothed[t-1]
+    return smoothed
+
 
 # Параметри дослідження
 start, end, step = 0, 10, 0.1
