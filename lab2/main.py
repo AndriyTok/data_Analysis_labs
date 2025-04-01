@@ -29,7 +29,7 @@ def cumulative_moving_average(y_noisy):
         smoothed[t] = sum_values / (t + 1)
     return smoothed
 
-def moving_average(y_noisy, window_size=5):
+def moving_average(y_noisy, window_size=8):
     smoothed = np.zeros_like(y_noisy)
     half_window = window_size // 2
     for i in range(len(y_noisy)):
@@ -38,7 +38,7 @@ def moving_average(y_noisy, window_size=5):
         smoothed[i] = sum(y_noisy[start:end]) / (end - start)
     return smoothed
 
-def exponential_smoothing(y_noisy, alpha=0.3):
+def exponential_smoothing(y_noisy, alpha=0.5):
     smoothed = np.zeros_like(y_noisy)
     smoothed[0] = y_noisy[0]
     for t in range(1, len(y_noisy)):
@@ -73,7 +73,7 @@ except ValueError:
     print("Некоректне введення! Використовуються значення за замовчуванням.")
     start, end, step = 0, 10, 0.1
     noise_mean, noise_std = 0, 0.2
-    window_size = 2
+    window_size = 8
     alpha = 0.5
 
 # Генеруємо дані
