@@ -21,6 +21,14 @@ def generate_data(start, end, step, noise_mean, noise_std):
     y_noisy = y_values + noise
     return x_values, y_values, y_noisy
 
+def cumulative_moving_average(y_noisy):
+    smoothed = np.zeros_like(y_noisy)
+    sum_values = 0
+    for t in range(len(y_noisy)):
+        sum_values += y_noisy[t]
+        smoothed[t] = sum_values / (t + 1)
+    return smoothed
+
 def moving_average(y_noisy, window_size=5):
     smoothed = np.zeros_like(y_noisy)
     half_window = window_size // 2
@@ -28,17 +36,6 @@ def moving_average(y_noisy, window_size=5):
         start = max(0, i - half_window)
         end = min(len(y_noisy), i + half_window + 1)
         smoothed[i] = sum(y_noisy[start:end]) / (end - start)
-    return smoothed
-
-def weighted_moving_average(y_noisy, window_size=5):
-    smoothed = np.zeros_like(y_noisy)
-    half_window = window_size // 2
-    for i in range(len(y_noisy)):
-        start = max(0, i - half_window)
-        end = min(len(y_noisy), i + half_window + 1)
-        weights = np.arange(1, end - start + 1)
-        weights = weights / weights.sum()
-        smoothed[i] = np.sum(y_noisy[start:end] * weights)
     return smoothed
 
 def exponential_smoothing(y_noisy, alpha=0.3):
@@ -76,27 +73,27 @@ except ValueError:
     print("Некоректне введення! Використовуються значення за замовчуванням.")
     start, end, step = 0, 10, 0.1
     noise_mean, noise_std = 0, 0.2
-    window_size = 5
-    alpha = 0.3
+    window_size = 2
+    alpha = 0.5
 
 # Генеруємо дані
 x_vals, y_clean, y_noisy = generate_data(start, end, step, noise_mean, noise_std)
 
 # Обчислення згладжених даних
+y_cma = cumulative_moving_average(y_noisy)
 y_sma = moving_average(y_noisy, window_size)
-y_wma = weighted_moving_average(y_noisy, window_size)
 y_ema = exponential_smoothing(y_noisy, alpha)
 
 # Обчислення похибок
+error_cma = calculate_error(y_clean, y_cma)
 error_sma = calculate_error(y_clean, y_sma)
-error_wma = calculate_error(y_clean, y_wma)
 error_ema = calculate_error(y_clean, y_ema)
 
-print(f"Похибка для SMA: {error_sma:.5f}")
-print(f"Похибка для WMA: {error_wma:.5f}")
-print(f"Похибка для EMA: {error_ema:.5f}")
+print(f"Похибка для методу оновлюваного середнього: {error_cma:5f}")
+print(f"Похибка для методу середнього ковзного: {error_sma:.5f}")
+print(f"Похибка для методу експоненціального згладжування: {error_ema:.5f}")
 
 # Відображення результатів
-plot_data(x_vals, y_clean, y_noisy, y_sma, "Просте ковзне середнє (SMA)")
-plot_data(x_vals, y_clean, y_noisy, y_wma, "Зважене ковзне середнє (WMA)")
-plot_data(x_vals, y_clean, y_noisy, y_ema, "Експоненційне згладжування (EMA)")
+plot_data(x_vals, y_clean, y_noisy, y_cma, "Метод оновлюваного середнього")
+plot_data(x_vals, y_clean, y_noisy, y_sma, "Ковзне середнє")
+plot_data(x_vals, y_clean, y_noisy, y_ema, "Експоненційне згладжування")
