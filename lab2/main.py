@@ -22,11 +22,10 @@ def generate_data(start, end, step, noise_mean, noise_std):
     return x_values, y_values, y_noisy
 
 def cumulative_moving_average(y_noisy):
-    smoothed = np.zeros_like(y_noisy)
-    sum_values = 0
-    for t in range(len(y_noisy)):
-        sum_values += y_noisy[t]
-        smoothed[t] = sum_values / (t + 1)
+    smoothed = np.zeros_like(y_noisy, dtype=np.float64)
+    smoothed[0] = y_noisy[0]  # Початкове значення
+    for t in range(1, len(y_noisy)):
+        smoothed[t] = smoothed[t-1] + (y_noisy[t] - smoothed[t-1]) / (t + 1)
     return smoothed
 
 def moving_average(y_noisy, window_size=8):
