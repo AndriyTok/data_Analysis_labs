@@ -23,7 +23,7 @@ def generate_data(start, end, step, noise_mean, noise_std):
 
 def cumulative_moving_average(y_noisy):
     smoothed = np.zeros_like(y_noisy, dtype=np.float64)
-    smoothed[0] = y_noisy[0]  # Початкове значення
+    smoothed[0] = y_noisy[0]
     for t in range(1, len(y_noisy)):
         smoothed[t] = smoothed[t-1] + (y_noisy[t] - smoothed[t-1]) / (t + 1)
     return smoothed
