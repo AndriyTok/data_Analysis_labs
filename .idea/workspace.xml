@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="47d9c37a-0330-4604-916a-e45875d78084" name="Changes" comment="lab5 done">
       <change afterPath="$PROJECT_DIR$/lab6/lab6.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/data_Analysis_labs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_Analysis_labs.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab5/lab5.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/lab5.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +223,7 @@
       <workItem from="1744783367712" duration="1284000" />
       <workItem from="1745339193355" duration="1042000" />
       <workItem from="1745958278706" duration="442000" />
-      <workItem from="1745992047094" duration="2949000" />
+      <workItem from="1745992047094" duration="4210000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -324,7 +321,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744714052772</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="lab5 done">
+      <option name="closed" value="true" />
+      <created>1745995017049</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1745995017049</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
