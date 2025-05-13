@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47d9c37a-0330-4604-916a-e45875d78084" name="Changes" comment="lab6">
+      <change beforePath="$PROJECT_DIR$/.idea/data_Analysis_labs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_Analysis_labs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab6/lab6.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/lab6/lab6.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,12 +32,12 @@
     &quot;assignee&quot;: &quot;AndriyTok&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/AndriyTok/data_Analysis_labs.git&quot;,
-    &quot;accountId&quot;: &quot;b6b56ee3-a8c2-430b-98fa-e1407604696f&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/AndriyTok/data_Analysis_labs",
+    "accountId": "b6b56ee3-a8c2-430b-98fa-e1407604696f"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -176,8 +179,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PY-251.25410.122" />
-        <option value="bundled-python-sdk-880ecab49056-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.122" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.23726.102" />
+        <option value="bundled-python-sdk-5e1850174b45-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.23726.102" />
       </set>
     </attachedChunks>
   </component>
@@ -224,6 +227,7 @@
       <workItem from="1745992047094" duration="4210000" />
       <workItem from="1746485907703" duration="10917000" />
       <workItem from="1747164395943" duration="4436000" />
+      <workItem from="1747172626539" duration="346000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
